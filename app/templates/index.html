@@ -1,40 +1,20 @@
 {% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block content %} {% if current_user.is_authenticated %}
 <div class="row">
   <div class="col-xs-4 text-center">
-    <h3>Hey <span class="text-primary">{{current_user.username}}</span>!</h3>
-    <hr>
-    {{ wtf.quick_form(form) }}
   </div>
   <div class="col-xs-8">
-    {% for post in posts %}
-      <div class="profile-thumbnail">
-        <a href="{{ url_for('.user', username=post.author.username) }}">
-        <img class="img-rounded profile-thumbnail" src="">
-        </a>
-      </div>
-      <div class="post-author">
-        <a href="{{ url_for('.user', username=post.author.username) }}">
-          {{ post.author.username }}
-        </a>
-      </div>
-      <div class="post-body"><p>{{ post.body }}</p></div>
-      <div class="post-date text-primary">posted: {{ moment(post.timestamp).fromNow(refresh=True) }}</div>
-    {% endfor %}
+
   </div>
 </div>
 {% else %}
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-4">
-      <div class="well" style="margin-top:10%; margin-bottom:10%; opacity:0.4">
-        <h2 class="text-center">Blogger</h2>
-        <p>This is where you get to air your views and let other people contribute and comment.
-        <br>The good thing is as a writer you get to moderate your readers comments. So you don't have to worry about negative comments.</p>
-      </div>
+
     </div>
     <div class="col-xs-4">
       <div class="well" style="margin-top:10%; margin-bottom:10%">
-        <h2 class="text-center">Welcome to Blogger</h2>
+        <h2 class="text-center text-primary">TWIT-FLUENCE</h2>
         <a href="{{url_for('auth.login')}}">
         <button type="click" name="button" class="btn btn-default btn-block" id="sign-in">SIGN IN</button>
       </a>

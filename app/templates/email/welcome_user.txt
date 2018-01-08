@@ -1,0 +1,6 @@
+Hey  {{user.username}}
+Thank you for creating an account with Blogger.
+You can now view your twitter influence score.
+You can also create new tweets directly to twitter.
+Enjoy
+Twitfluence Team.
