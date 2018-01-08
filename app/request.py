@@ -21,7 +21,6 @@ def get_searches(search):
     """
 
     get_searches_url = base_url.format(search, api_key)
-    #get_searches_url = 'https://newsapi.org/v1/searches'.format(search, api_key)
 
     with urllib.request.urlopen(get_searches_url) as url:
         get_searches_data = url.read()
