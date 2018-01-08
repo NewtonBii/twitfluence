@@ -29,7 +29,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to Blogger", "email/welcome_user",user.email,user=user)
+        mail_message("Welcome to Twitfluence", "email/welcome_user",user.email,user=user)
 
         return redirect(url_for('main.index'))
         title = "New Account"
