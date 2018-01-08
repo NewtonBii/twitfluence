@@ -7,28 +7,31 @@
   </div>
 </div>
 {% else %}
-<div class="container-fluid">
+<div class="container-fluid" style="background-image:url('static/images/faces-2679755_1280.jpg'); background-size:cover; position:fixed; height:100%; width:100%">
   <div class="row">
-    <div class="col-xs-4">
+    <!-- <div class="col-xs-4">
 
-    </div>
-    <div class="col-xs-4">
-      <div class="well" style="margin-top:10%; margin-bottom:10%">
-        <h2 class="text-center text-primary">TWIT-FLUENCE</h2>
-        <a href="{{url_for('auth.login')}}">
-        <button type="click" name="button" class="btn btn-default btn-block" id="sign-in">SIGN IN</button>
-      </a>
-        <a href="{{url_for('auth.register')}}">
-        <button type="button" name="button" class="btn btn-default btn-block" id="register">REGISTER</button>
-      </a>
+    </div> -->
+    <!-- <div class="col-xs-4">
+    </div> -->
+      <div class="col-xs-12 col-sm-4 col-md-4 col-xs-offset-0 col-md-offset-4 col-lg-offset-4 col-xl-offset-4">
+        <div class="well" style="position:fixed; height:100%; opacity:0.9">
+          <a href="{{ url_for('main.index') }}"><h2 class="text-center text-primary" style="font-family: 'Bree Serif', serif;">TWIT-FLUENCE</h2></a>
+
+          <div class="buttons" style="margin-top:50%">
+            <a href="{{url_for('auth.login')}}">
+            <button type="click" name="button" class="btn btn-default btn-block" id="sign-in">SIGN IN</button>
+          </a>
+            <a href="{{url_for('auth.register')}}">
+            <button type="button" name="button" class="btn btn-default btn-block" id="register">REGISTER</button>
+          </a>
+          </div>
+        </div>
       </div>
-      <div class="col-xs-4">
-      </div>
-    </div>
+
   </div>
   {% endif %} {% block styles%} {{ super() }}
-  <link href="https://fonts.googleapis.com/css?family=Acme|Berkshire+Swash|Bree+Serif|Courgette|Lobster|Sedgwick+Ave+Display|Yanone+Kaffeesatz" rel="stylesheet">
-  <style>
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">  <style>
     /*font-family: 'Courgette', cursive;
 font-family: 'Sedgwick Ave Display', cursive;
 font-family: 'Lobster', cursive;
@@ -61,6 +64,9 @@ font-family: 'Berkshire Swash', cursive;*/
 
     .container-fluid {
       background-color: #2471A3;
+    }
+    #register{
+      margin-top: 20px;
     }
   </style>
   {% endblock %} {% endblock %}
