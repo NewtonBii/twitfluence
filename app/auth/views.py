@@ -5,7 +5,7 @@ from .forms import RegistrationForm, LoginForm
 from .. import db
 from flask_login import login_user, logout_user, login_required
 from ..email import mail_message
-
+from flask_dance.contrib.twitter import twitter
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -19,6 +19,15 @@ def login():
         flash('Invalid username or Password')
 
     return render_template('auth/login.html', login_form=login_form)
+
+@auth.route('/twitter')
+def twitter_login():
+    if not twitter.authorized:
+        return redirect(url_for('twitter.login'))
+    resp=twitter.get("account/settings.json")
+    assert resp.ok
+    response = resp.json()
+    return render_template('twitter.html', response=response)
 
 
 @auth.route('/register', methods=["GET", "POST"])

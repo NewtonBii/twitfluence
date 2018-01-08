@@ -11,6 +11,6 @@ from datetime import datetime
 def index():
     """View root page function that returns index page and the various news sources"""
 
-    title = 'Home- Welcome to Blogger'
+    title = 'Home- Welcome to Twitfluence'
 
     return render_template('index.html', title=title)
