@@ -36,8 +36,8 @@ def search_user():
 
     user_name = request.args.get('screen_name')
 
-    payload={'screen_name':user_name}
+    payload={'screen_name':user_name, 'count':20}
     r = api.request('users/show', params=payload)
     info = r.json()
-
+    print(info)
     return render_template('search.html', info=info)

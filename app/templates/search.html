@@ -1,10 +1,87 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="col-xs-4">
+    <form>
+      <input type="text" name="screen_name" placeholder="Search for a user" class="form-control" value={{user_name}}>
+      <input type="submit" value="SEARCH" class="btn btn-default btn-block ">
+    </form>
+    <div class="profile-container">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{info['profile_image_url']}}" class="img-responsive" width="100" height="100" />
+        </div>
+        <div class="col-md-8 profile-info">
+          <h4 class="user-name">{{info['name']}}</h4>
+          <h5 class="user-mail"><i>@{{info['screen_name']}}</i></h5>
+          <h5 class="user-company">{{info['location']}}</h5>
+        </div>
+      </div>
+      <br/><br/>
+      <div class="row more-info">
+        <div class="col-md-6">
+          <h5><b>TWEETS</b></h5>
+          <p>{{info['statuses_count']}}</p>
+        </div>
+        <div class="col-md-6">
+          <h5><b>FOLLOWING</b></h5>
+          <p>{{info['friends_count']}}</p>
+        </div>
+      </div>
+      <div class="row more-info">
+        <div class="col-md-6">
+          <h5><b>FOLLOWERS</b></h5>
+          <p>{{info['followers_count']}}</p>
+
+        </div>
+        <div class="col-md-6">
+          <h5><b>LIKES</b></h5>
+          <p>{{info['favourites_count']}}</p>
+        </div>
+      </div>
+  </div>
+  <div class="col-xs-4">
 
 
-<form >
-    <input type="text" name="screen_name" placeholder="Search for a user" class="form-control" value={{user_name}}>
-    <input type="submit"  value="search twitter" class="btn btn-default">
-</form>
-<h1>{{info['name']}}</h1>
-<h1>{{info['screen_name']}}</h1>
-<h2>{{info['statuses_count']}}</h2>
-<img src="{{info['profile_image_url_https']}}" alt="">
+    </div>
+    <div class="col-xs-4">
+
+    </div>
+  </div>
+
+
+  {% endblock %} {% block styles %} {{ super() }}
+  <style>
+    .profile-container{
+      width:100%;
+      margin:auto;
+      background-color:#fff;
+      padding:30px;
+      height:auto;
+    }
+    .user-name{
+      color:#0e2f44;
+      font-weight:bold;
+    }
+    .user-mail{
+      color:#858585;
+    }
+    .user-company{
+      font-weight:bold;
+      color:#5ad45c;
+    }.more-info{
+      background-color:#e5e5e5;
+      border-bottom:#ccc 1px solid ;
+    }.todo-links{
+      padding:10px;
+      border-bottom:1px solid #ccc;
+
+    }
+    .todo-links a i{
+      margin-right:20px;
+    }
+    .todo-links a{
+      color:#000;
+      font-size:16px;
+    }
+  </style>
+  {% endblock %}
