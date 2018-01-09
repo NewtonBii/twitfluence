@@ -1,12 +1,4 @@
-{% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block content %} {% if current_user.is_authenticated %}
-<div class="row">
-  <div class="col-xs-4 text-center">
-  </div>
-  <div class="col-xs-8">
-
-  </div>
-</div>
-{% else %}
+{% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block content %}
 <div class="container-fluid" style="background-image:url('static/images/faces-2679755_1280.jpg'); background-size:cover; position:fixed; height:100%; width:100%">
   <div class="row">
     <div class="col-md-4">
@@ -22,7 +14,7 @@
           <a href="{{url_for('auth.register')}}">
           <button type="button" name="button" class="btn btn-default btn-block" id="register">REGISTER</button>
         </a>
-        <a href="{{url_for('twitter.twitter_login')}}">
+        <a href="{{url_for('main.twitter')}}">
         <button type="button" name="button" class="btn btn-default btn-block" id="register">LOG IN WITH TWITTER</button>
       </a>
         </div>
@@ -31,7 +23,7 @@
       <div class="col-md-4">
       </div>
   </div>
-  {% endif %} {% block styles%} {{ super() }}
+  {% endblock %}{% block styles%} {{ super() }}
 <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">  <style>
     /*font-family: 'Courgette', cursive;
 font-family: 'Sedgwick Ave Display', cursive;
@@ -70,4 +62,4 @@ font-family: 'Berkshire Swash', cursive;*/
       margin-top: 20px;
     }
   </style>
-  {% endblock %} {% endblock %}
+  {% endblock %}

@@ -6,8 +6,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from ..email import mail_message
 from datetime import datetime
 from TwitterAPI import TwitterAPI
-from twitter import *
 import json
+from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 
 
 
@@ -19,19 +19,26 @@ def index():
 
     return render_template('index.html', title=title)
 
-@main.route('/user', methods = ['GET', 'POST'])
-def user():
-    api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
-    r = api.request('users/show', {'screen_name':'BiiNewton'})
-    info = r.json()
-    return render_template('twitter.html')
+
+@main.route('/twitter', methods = ['GET', 'POST'])
+def twitter():
+    """View route for loggin in with twitter"""
+
+    if current_user.is_authenticated == False:
+        return redirect(url_for("twitter.login"))
+    resp = twitter.get("account/settings.json")
+    assert resp.ok
+
+    return render_template('search.html')
+
+
 
 @main.route('/search', methods=['GET', 'POST'])
 def search_user():
-    consumer_key ='c6y4MfuRKHAgQXHurapapvoQo'
-    consumer_secret ='LG3tA7gi5hFSqcFVPskEteZtNims1Ve1AwZzs0vjmTZJLCHXuQ'
-    access_token='300098394-hjlirwFTSlbkhj5rXkYlh7gLrzbEEP7EtAOrEmms'
-    access_token_secret='vsSRoYWz8DeQPcGuKgWItvtNnaXE6H3Hmfx1JgeUdexGk'
+    consumer_key ='Zy6Ty56VKSCIZH2EjO4jaGMLo'
+    consumer_secret ='8jeO4iShJyJMtkOt33iK8fo09n3EePa7mjxwyDVpKv9axYPdmq'
+    access_token='300098394-Ip8cNXKnD6bsaXFSbPXwhsFWrKDvo9gQdXkuhNcK'
+    access_token_secret='OQtSOnKHxIf0UpACvrCsKazWBYdFCP4dCXZqnjoJXxPF6'
     api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
 
     user_name = request.args.get('screen_name')
