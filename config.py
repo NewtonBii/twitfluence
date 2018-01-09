@@ -1,6 +1,7 @@
 import os
 
 
+
 class Config:
     """Main configurations class"""
 
@@ -12,6 +13,10 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    consumer_key = os.environ.get("consumer_key")
+    consumer_secret = os.environ.get("consumer_secret")
+    access_token = os.environ.get("access_token")
+    access_token_secret = os.environ.get("acce")
 
 
 

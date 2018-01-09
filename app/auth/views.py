@@ -20,15 +20,6 @@ def login():
 
     return render_template('auth/login.html', login_form=login_form)
 
-@auth.route('/twitter')
-def twitter_login():
-    if not twitter.authorized:
-        return redirect(url_for('twitter.login'))
-    resp=twitter.get("account/settings.json")
-    assert resp.ok
-    response = resp.json()
-    return render_template('twitter.html', response=response)
-
 
 @auth.route('/register', methods=["GET", "POST"])
 def register():

@@ -6,7 +6,8 @@ from flask_login import LoginManager
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from flask_mail import Mail
 from flask_moment import Moment
-from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
+from TwitterAPI import TwitterAPI
+
 
 
 
@@ -16,10 +17,6 @@ login_manager = LoginManager()
 photos = UploadSet('photos', IMAGES)
 mail = Mail()
 moment = Moment()
-blueprint = make_twitter_blueprint(
-    api_key="xHeaXMvVSq1QmiyTZZnImAnbl",
-    api_secret="EHSaXjfnokTkGMRiH4BydhOygJjo97tHBCVOxDHx9yG1Ki7Iu2",
-)
 
 
 def create_app(config_name):
@@ -47,6 +44,7 @@ def create_app(config_name):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/authenticate')
 
+    from .twitter import blueprint as blueprint
     app.register_blueprint(blueprint, url_prefix="/login")
 
     return app
