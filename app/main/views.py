@@ -57,11 +57,26 @@ def search_user():
     info = r.json()
     info1 = f.json()
 
-    date_created = time.strptime(info['created_at'], '%a %b %d %H:%M:%S %z %Y')
-    dt = datetime.fromtimestamp(mktime(date_created)).date()
-    print(dt)
+    date_created_time_struct = time.strptime(info['created_at'], '%a %b %d %H:%M:%S %z %Y')
+    date_created_date = datetime.fromtimestamp(mktime(date_created)).date()
+    date_now=datetime.now().date()
+    delta = date_now - date_created_date
+    number_of_days = delta.days
+    number_of_tweets = info['statuses_count']
+    number_of_followers = info['followers_count']
+    number_of_following = info['friends_count']
 
-    trends = api.request('trends/place', 'id=23424863')
-    trends_info = trends.json()
+    def twitfluence(tweets, days, followers, following):
+        first=math.log((tweets/days)*followers*(math.log(((followers/following)+1),10)), 10)
+        if first > 10:
+            return 10
+        return first
 
-    return render_template('search.html', info=info, info1=info1, trends_info=trends_info)
+    twitfluence_score = twitfluence(number_of_tweets,number_of_days, number_of_followers, number_of_following)
+
+    print(delta.days)
+
+    trends = api.request('trends/place', 'id=23424863').json()
+
+
+    return render_template('search.html', info=info, info1=info1, trends=trends, twitfluence_score=twitfluence_score)
