@@ -22,7 +22,7 @@
       </div>
       <div class="statRightHolder">
         <ul>
-          <li> <h3 class="blue">{{info['name']}}</h3> <img src="{{info['profile_image_url']}}" alt="image"> </li>
+          <li> <h3 class="blue">{{info['name']}}</h3> <img src="{{info['profile_image_url_https']}}" alt="image"> </li>
             <h3 class="purple">@{{info['screen_name']}}</h3>
           </li>
         </ul>
@@ -47,15 +47,24 @@
     <div class="span4">
       <div class="todo mrm">
         <div class="todo-header">
-          <h3 class="demo-panel-title">CURRENT TRENDS</h3>
+          <h3 class="demo-panel-title">Trending Topics</h3>
         </div>
           <ul style="overflow-y:scroll">
             <li class="todo-wrap one">
               <div class="todo-content">
-                <h4 class="todo-name">
-                  KENYA
+                <h4 class="todo-name text-center">
+                  Kenya
                 </h4>
-                {{trends}}
+                <ul>
+                    {% for trend in trends%}
+                    <a href="{{trend['url']}}" style="text-decoration:none">
+                    <div class="trends">
+                      <li style="margin-top:10px">{{trend['name']|upper}}</li>
+                      <hr>
+                    </div>
+                    </a>
+                  {% endfor %}
+                </ul>
               </div>
             </li>
           </ul>
@@ -92,6 +101,14 @@ $(function(){
 
 {% endblock %} {% block styles %} {{ super() }}
 <style>
+.trends li:hover{
+  color: white;
+
+}
+.trends a{
+  text-align: center;
+  text-decoration: none;
+}
   .progressDiv {
     width: 100%;
     background: #fcfcfc;

@@ -76,7 +76,9 @@ def search_user():
     twitfluence_score = twitfluence(number_of_tweets,number_of_days, number_of_followers, number_of_following)
     percentage_score = math.floor(twitfluence_score*10)
 
-    # trends = api.request('trends/place', 'id=23424863').json()
+    trends = api.request('trends/place', 'id=1528488').json()[0]['trends']
+
+    print(trends[0])
 
 
-    return render_template('search.html', info=info, percentage_score=percentage_score)
+    return render_template('search.html', info=info, percentage_score=percentage_score, trends =trends)
