@@ -17,6 +17,10 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True, index=True)
+    bio = db.Column(db.String(255))
+    location = db.Column(db.String(255))
+    member_since = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
 
@@ -47,4 +51,3 @@ class TwitterRequest:
         self.followers_count = followers_count
         self.favourited_count = favourited_count
         self.list_count = list_count
-=======

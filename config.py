@@ -1,25 +1,17 @@
 import os
 
-<<<<<<< HEAD
 class Config:
 
     TWITTER_API_BASE_URL = 'https://api.twitter.com/1.1/users/lookup.json?screen_name=twitterapi,twitter/{}?api_key={}'
     TWITTER_API_KEY = ''
     SECRET_KEY =   'kepha'
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://rkepha:KR@localhost/twitfluenceKT'
 
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://rkepha:KR@localhost/twitter'
 
-class ProdConfig(Config):
-    pass
-
-
-
-
-class DevConfig(Config):
-=======
 
 class Config:
+
     """Main configurations class"""
 
     SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
@@ -40,7 +32,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     """Configuration class for development stage of the app"""
->>>>>>> 19bebcbeb0bbc86c36b215f265b10a08a045839f
+
     DEBUG = True
 
 
