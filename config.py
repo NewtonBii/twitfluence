@@ -1,7 +1,6 @@
 import os
 
 
-
 class Config:
     """Main configurations class"""
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -13,8 +12,8 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-
-
+    SUBJECT_PREFIX = 'PITCH'
+    SENDER_EMAIL = 'biinewtondev@yahoo.com'
 
 
 class ProdConfig(Config):

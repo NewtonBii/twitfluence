@@ -12,6 +12,7 @@ import json
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 import time
 from time import mktime
+import math
 
 
 
@@ -40,25 +41,23 @@ def twitter():
 
 @main.route('/search', methods=['GET', 'POST'])
 def search_user():
-    consumer_key ='Zy6Ty56VKSCIZH2EjO4jaGMLo'
-    consumer_secret ='8jeO4iShJyJMtkOt33iK8fo09n3EePa7mjxwyDVpKv9axYPdmq'
+    consumer_key ='AQiZnAVb1NlnMJooyIYonMiO8'
+    consumer_secret ='l08BAtgpJjOnblfJYxOK5gip2XSbQCNhsg7vNj9zcgmdLg2t3J'
     access_token='300098394-Ip8cNXKnD6bsaXFSbPXwhsFWrKDvo9gQdXkuhNcK'
     access_token_secret='OQtSOnKHxIf0UpACvrCsKazWBYdFCP4dCXZqnjoJXxPF6'
     api = TwitterAPI(consumer_key, consumer_secret, access_token, access_token_secret)
 
     user_name = request.args.get('screen_name')
 
+    if user_name is None:
+        user_name = 'twitterdev'
     payload={'screen_name':user_name}
-    payload1={'screen_name':user_name, 'count':20}
+    r = api.request('users/lookup', params=payload)
+    info = r.json()[0]
 
-    r = api.request('users/show', params=payload)
-    f = api.request('statuses/user_timeline', params=payload1)
-
-    info = r.json()
-    info1 = f.json()
-
-    date_created_time_struct = time.strptime(info['created_at'], '%a %b %d %H:%M:%S %z %Y')
-    date_created_date = datetime.fromtimestamp(mktime(date_created)).date()
+    date_created = info['created_at']
+    date_created_time_struct = time.strptime(date_created, '%a %b %d %H:%M:%S %z %Y')
+    date_created_date = datetime.fromtimestamp(mktime(date_created_time_struct)).date()
     date_now=datetime.now().date()
     delta = date_now - date_created_date
     number_of_days = delta.days
@@ -70,13 +69,14 @@ def search_user():
         first=math.log((tweets/days)*followers*(math.log(((followers/following)+1),10)), 10)
         if first > 10:
             return 10
+        if first < 0:
+            return 0.1
         return first
 
     twitfluence_score = twitfluence(number_of_tweets,number_of_days, number_of_followers, number_of_following)
+    percentage_score = math.floor(twitfluence_score*10)
 
-    print(delta.days)
-
-    trends = api.request('trends/place', 'id=23424863').json()
+    # trends = api.request('trends/place', 'id=23424863').json()
 
 
-    return render_template('search.html', info=info, info1=info1, trends=trends, twitfluence_score=twitfluence_score)
+    return render_template('search.html', info=info, percentage_score=percentage_score)
