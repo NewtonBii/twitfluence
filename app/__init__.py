@@ -29,6 +29,10 @@ def create_app(config_name):
 
     # Creating the app configurations.
     app.config.from_object(config_options[config_name])
+    blueprint = make_twitter_blueprint(
+        api_key="dWsKFkfCXTKo42qbtEacqDJsj",
+        api_secret="HVkYw19eMvmjnWmUPElPyLHQrrUJLfoDSMAjBL7MCDqs2wj1OX",
+    )
 
     # Intitializing flask extensions
     bootstrap.init_app(app)
@@ -48,10 +52,6 @@ def create_app(config_name):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/authenticate')
 
-    blueprint = make_twitter_blueprint(
-    api_key="xHeaXMvVSq1QmiyTZZnImAnbl",
-    api_secret="EHSaXjfnokTkGMRiH4BydhOygJjo97tHBCVOxDHx9yG1Ki7Iu2",
-    )
-    app.register_blueprint(blueprint, url_prefix="/twitter/login")
+    app.register_blueprint(blueprint, url_prefix="/login")
 
     return app

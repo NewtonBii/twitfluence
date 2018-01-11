@@ -4,14 +4,19 @@ from ..models import User
 from .. import db
 from flask_login import login_user, logout_user, login_required, current_user
 from ..email import mail_message
-from datetime import datetime
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
+from dateutil import rrule
 from TwitterAPI import TwitterAPI
 import json
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
+import time
+from time import mktime
 
 
 
-@main.route('/', methods = ['GET', 'POST'])
+
+@main.route('/')
 def index():
     """View root page function that returns index page and the various news sources"""
 
@@ -43,8 +48,20 @@ def search_user():
 
     user_name = request.args.get('screen_name')
 
-    payload={'screen_name':user_name, 'count':20}
+    payload={'screen_name':user_name}
+    payload1={'screen_name':user_name, 'count':20}
+
     r = api.request('users/show', params=payload)
+    f = api.request('statuses/user_timeline', params=payload1)
+
     info = r.json()
-    print(info)
-    return render_template('search.html', info=info)
+    info1 = f.json()
+
+    date_created = time.strptime(info['created_at'], '%a %b %d %H:%M:%S %z %Y')
+    dt = datetime.fromtimestamp(mktime(date_created)).date()
+    print(dt)
+
+    trends = api.request('trends/place', 'id=23424863')
+    trends_info = trends.json()
+
+    return render_template('search.html', info=info, info1=info1, trends_info=trends_info)
