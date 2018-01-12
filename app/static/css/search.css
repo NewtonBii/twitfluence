@@ -1,0 +1,327 @@
+a.nostyle {
+  color: inherit;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+div.portfoliocard {
+  height: 450px;
+  width: 400px;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.1),
+  0px 2px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+div.portfoliocard div.coverphoto {
+  width: 100%;
+  height: 120px;
+  background-image: url('{{info['profile_banner_url']}}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 3px 20px rgba(255, 255, 255, 0.3),
+  1px 0px 2px rgba(255, 255, 255, 0.7);
+  z-index: 99;
+}
+
+div.portfoliocard div.left_col,
+div.portfoliocard div.right_col {
+  float: left;
+  height: 340px;
+}
+
+div.portfoliocard div.left_col {
+  width: 40%;
+  padding-top: 85px;
+  box-sizing: border-box;
+}
+
+div.portfoliocard div.right_col {
+  width: 60%;
+  background: rgba(245, 245, 245, 1);
+  border-left: 1px solid rgba(230, 230, 230, 1);
+  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.7);
+  margin-left: -1px;
+  border-bottom-right-radius: 5px;
+}
+
+div.portfoliocard div.profile_picture {
+  width: 110px;
+  height: 110px;
+  background: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 85px;
+  left: 40px;
+  border-radius: 100%;
+  background-image: url('{{info['profile_image_url_https']}}');
+  background-size: 100% 100%;
+  padding: 7px;
+  border: 4px solid rgba(255, 255, 255, 1)
+}
+
+div.portfoliocard div.right_col h2.name {
+  font-size: 25px;
+  font-weight: 300;
+  color: #154360;
+  padding: 0;
+  margin: 20px 10px 0px 30px;
+}
+
+div.portfoliocard div.right_col h3.location {
+  font-size: 15px;
+  font-weight: 300;
+  color: #154360;
+  padding: 0;
+  margin: -5px 10px 10px 30px;
+}
+
+
+div.portfoliocard div.followers,
+div.portfoliocard div.following {
+  margin: 10px 0px 0px 15px;
+  font-weight: 800;
+  font-size: 20px;
+  color: #1B2631;
+}
+
+div.portfoliocard div.follow_count {
+  font-weight: 400;
+  font-size: 25px;
+  color: rgba(110, 140, 140, 1);
+}
+
+.trends li:hover {
+  color: white;
+
+}
+
+.trends a {
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Pie Chart */
+
+.progress-pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #E5E5E5;
+  position: relative;
+}
+
+.progress-pie-chart.gt-50 {
+  background-color: #81CE97;
+}
+
+.ppc-progress {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 200px, 200px, 100px);
+}
+
+.ppc-progress .ppc-progress-fill {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 100px, 200px, 0);
+  background: #81CE97;
+  transform: rotate(60deg);
+}
+
+.gt-50 .ppc-progress {
+  clip: rect(0, 100px, 200px, 0);
+}
+
+.gt-50 .ppc-progress .ppc-progress-fill {
+  clip: rect(0, 200px, 200px, 100px);
+  background: #E5E5E5;
+}
+
+.ppc-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 173.91304px/2);
+  top: calc(50% - 173.91304px/2);
+  width: 173.91304px;
+  height: 173.91304px;
+  background: #fff;
+  text-align: center;
+  display: table;
+}
+
+.ppc-percents span {
+  display: block;
+  font-size: 2.6em;
+  font-weight: bold;
+  color: #81CE97;
+}
+
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.progress-pie-chart {
+  margin: 50px auto 0;
+}
+
+@media(max-width: 720px) {
+
+  .progressDiv {
+    height: auto;
+  }
+  .statChartHolder {
+    width: 100%;
+    display: block;
+    padding-bottom: 65px;
+    border-right: none;
+    border-bottom: 1px solid #ccc
+  }
+  .statRightHolder {
+    display: block;
+    height: auto;
+    width: 100%;
+    position: relative;
+    padding-top: 65px;
+    margin-bottom: 100px;
+  }
+
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 4px;
+  line-height: 20px;
+  text-rendering: optimizelegibility;
+}
+
+.span4 {
+  width: 100%;
+  height: 600px;
+}
+
+[class*="span"] {
+  min-height: 1px;
+  margin-left: 20px;
+}
+
+.mrm {
+  margin-right: 10px;
+}
+
+.todo {
+  background-color: #2c3e50;
+  border-radius: 8px 8px 6px 6px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.todo-header {
+  background: #1ABC9C 92% center no-repeat;
+  background-size: 16px 16px;
+  border-radius: 6px 6px 0 0;
+  color: #34495e;
+  padding: 10px 20px;
+  position: sticky;
+}
+
+.todo ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  display: block;
+}
+
+.todo-name {
+  color: #FFF;
+  font-size: 17px;
+  margin: 1px 0 3px;
+}
+
+.todo-name.clouds {
+  color: #BDC3C7;
+}
+
+.todo li {
+  background: transparent 92% center no-repeat;
+  background-size: 20px 20px;
+  color: #1abc9c;
+}
+
+.todo-wrap {
+  background-size: 20px 20px;
+  cursor: pointer;
+  padding: 10px 18px;
+  position: relative;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+}
+
+.one {
+  background: #16A085;
+}
+
+.profile-container {
+  width: 100%;
+  margin: auto;
+  background-color: #fff;
+  padding: 30px;
+  height: auto;
+}
+
+.user-name {
+  color: #0e2f44;
+  font-weight: bold;
+}
+
+.user-mail {
+  color: #858585;
+}
+
+.user-company {
+  font-weight: bold;
+  color: #5ad45c;
+}
+
+.more-info {
+  background-color: #e5e5e5;
+  border-bottom: #ccc 1px solid;
+}
+
+.todo-links {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+
+}
+
+.todo-links a i {
+  margin-right: 20px;
+}
+
+.todo-links a {
+  color: #000;
+  font-size: 16px;
+}
