@@ -1,0 +1,17 @@
+.error-template {
+  padding: 40px 15px;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+}
+.error-actions {
+  margin-top:15px;
+  margin-bottom:15px;
+}
+.error-actions .btn {
+   margin-right:10px;
+ }
+
+ /*font-family: 'Bungee', cursive;
+ font-family: 'Russo One', sans-serif;
+ font-family: 'Boogaloo', cursive;
+ font-family: 'Caveat Brush', cursive;*/

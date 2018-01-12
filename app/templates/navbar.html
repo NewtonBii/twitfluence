@@ -1,0 +1,16 @@
+<nav class="navbar navbar-inverse" style="background-color:#1B4F72 ">
+  <div class="container-fluid">
+    {% if current_user.is_authenticated %}
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{ url_for('main.search_user') }}">TWIT-FLUENCE</a>
+    </div>
+    <ul class="nav navbar-nav">
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{{url_for('main.search_user')}}"><span class="glyphicon glyphicon-user"></span> MY PROFILE</a></li>
+      <li><a href="{{url_for('auth.logout')}}"><span class="glyphicon glyphicon-log-out"></span> LOG OUT </a></li>
+    </ul>
+    {% endif %}
+
+  </div>
+</nav>

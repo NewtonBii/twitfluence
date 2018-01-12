@@ -1,0 +1,30 @@
+{% extends 'bootstrap/base.html' %}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Home- Welcome to Twitfluence</title>
+    {% endif %}
+
+  </head>
+
+  <body>
+    <!-- Content Block -->
+    {% block content %} {% endblock %}
+    <!-- Navbar block  -->
+    {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+    {% block scripts%}
+        {{super()}}
+      {{ moment.include_jquery() }}
+      {{ moment.include_moment() }}
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {% endblock %}
+  </body>
+
+</html>

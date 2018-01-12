@@ -1,0 +1,65 @@
+{% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block content %}
+<div class="container-fluid" style="background-image:url('static/images/faces-2679755_1280.jpg'); background-size:cover; position:fixed; height:100%; width:100%">
+  <div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4" style="margin-top:10%">
+      <div class="well" style="height:100%; opacity:0.9; width:100%">
+        <a href="{{ url_for('main.index') }}"><h2 class="text-center text-primary" style="font-family: 'Bree Serif', serif;">TWIT-FLUENCE</h2></a>
+        <div class="buttons" style="margin-top:50%">
+          <a href="{{url_for('auth.login')}}">
+          <button type="click" name="button" class="btn btn-default btn-block" id="sign-in">SIGN IN</button>
+          </a>
+          <a href="{{url_for('auth.register')}}">
+          <button type="button" name="button" class="btn btn-default btn-block" id="register">REGISTER</button>
+        </a>
+        <a href="{{url_for('main.twitter')}}">
+        <button type="button" name="button" class="btn btn-default btn-block" id="register">LOG IN WITH TWITTER</button>
+      </a>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-4">
+      </div>
+  </div>
+  {% endblock %}{% block styles%} {{ super() }}
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">  <style>
+    /*font-family: 'Courgette', cursive;
+font-family: 'Sedgwick Ave Display', cursive;
+font-family: 'Lobster', cursive;
+font-family: 'Yanone Kaffeesatz', sans-serif;
+font-family: 'Bree Serif', serif;
+font-family: 'Acme', sans-serif;
+font-family: 'Berkshire Swash', cursive;*/
+
+    * {
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Berkshire Swash', cursive;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 3.5em;
+      margin-top: 10%;
+    }
+
+    h2 {
+      font-family: 'Berkshire Swash', cursive;
+      font-weight: 400;
+      font-size: 2.5em;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .container-fluid {
+      background-color: #2471A3;
+    }
+    #register{
+      margin-top: 20px;
+    }
+  </style>
+  {% endblock %}

@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 Hello {{user.username}}
 Welcome to One Minute pitch
 We have just seen you have signed up for our application and want to welcome you to the family. Please enjoy feel free to add more pitches and comment on pitches posted by other users
+=======
+Hey  {{user.username}}
+Thank you for creating an account with TWITFLUENCE.
+You can now view your twitter influence score.
+You can also create new tweets directly to twitter.
+Enjoy
+Twitfluence Team.
+>>>>>>> master

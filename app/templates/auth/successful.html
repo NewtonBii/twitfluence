@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/successful.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Boogaloo|Bungee|Caveat+Brush|Russo+One" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row" style="font-family: 'Bungee', cursive;">
+    <div class="col-md-12">
+        <div class="error-template">
+            <h1>
+                WELCOME!</h1>
+            <h2>
+                </h2>
+            <div class="error-details">
+                You have been Successfully registered
+            </div>
+            <div class="error-actions">
+                <a href="{{url_for('main.search_user')}}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    TWIT-FLUENCE </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
