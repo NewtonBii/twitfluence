@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 from flask import render_template,redirect,url_for
 from app.models import User
@@ -33,6 +34,8 @@ def update_profile(uname):
 
     return render_template('profile/update.html',form =form)
 =======
+=======
+>>>>>>> master
 from flask import render_template, request, redirect, url_for, abort
 from . import main
 from ..models import User
@@ -117,4 +120,7 @@ def search_user():
 
 
     return render_template('search.html', info=info, percentage_score=percentage_score, trends =trends)
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
