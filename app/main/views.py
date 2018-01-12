@@ -25,19 +25,14 @@ def index():
 
     return render_template('index.html', title=title)
 
-
-@main.route('/twitter', methods = ['GET', 'POST'])
-def twitter():
-    """View route for loggin in with twitter"""
-
-    if current_user.is_authenticated == False:
-        return redirect(url_for("twitter.login"))
-    resp = twitter.get("account/settings.json")
-    assert resp.ok
-
-    return render_template('search.html')
-
-
+# @main.route('/twitter/authorized')
+# def twitter_login():
+#     if not twitter.authorized:
+#         return redirect(url_for('twitter.login'))
+#     resp = twitter.get("account/settings.json")
+#     assert resp.ok
+#
+#     return render_template('search.html')
 
 @main.route('/search', methods=['GET', 'POST'])
 def search_user():

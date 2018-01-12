@@ -5,10 +5,10 @@
       <input type="text" name="screen_name" placeholder="Search for a user" class="form-control" value={{user_name}}>
       <input type="submit" value="SEARCH" class="btn btn-default btn-block ">
     </form>
-    <div class="progressDiv">
-      <div class="statChartHolder">
+    <!-- <div class="progressDiv"> -->
+    <!-- <div class="statChartHolder">
         <div class="progress-pie-chart" data-percent="{{percentage_score}}">
-          <!--Pie Chart -->
+
           <div class="ppc-progress">
             <div class="ppc-progress-fill"></div>
           </div>
@@ -18,9 +18,42 @@
             </div>
           </div>
         </div>
-        <!--End Chart -->
+
+      </div> -->
+    <div class="portfoliocard">
+      <div class="coverphoto"></div>
+      <div class="profile_picture"></div>
+      <div class="left_col">
+        <div class="followers">
+          <div class="follow_count">{{info['followers_count']}}</div>
+          Followers
+        </div>
+        <div class="following">
+          <div class="follow_count">{{info['friends_count']}}</div>
+          Following
+        </div>
+        <div class="following">
+          <div class="follow_count">{{info['statuses_count']}}</div>
+          Tweets
+        </div>
       </div>
-      <div class="statRightHolder">
+      <div class="right_col">
+        <h2 class="name">{{info['name']}}</h2>
+        <a href="{{info['url']}}"><h3 class="location">@{{info['screen_name']}}</h3></a>
+        <div class="progress-pie-chart" data-percent="{{percentage_score}}">
+
+          <div class="ppc-progress">
+            <div class="ppc-progress-fill"></div>
+          </div>
+          <div class="ppc-percents">
+            <div class="pcc-percents-wrapper">
+              <span>%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="statRightHolder">
         <ul>
           <li> <h3 class="blue">{{info['name']}}</h3> <img src="{{info['profile_image_url_https']}}" alt="image"> </li>
             <h3 class="purple">@{{info['screen_name']}}</h3>
@@ -39,9 +72,9 @@
           <li>
             <h3>{{info['favourites_count']}}</h3> <span>Likes</span></li>
         </ul>
-      </div>
+      </div> -->
 
-    </div>
+    <!-- </div> -->
   </div>
   <div class="col-xs-4">
     <div class="span4">
@@ -49,176 +82,159 @@
         <div class="todo-header">
           <h3 class="demo-panel-title">Trending Topics</h3>
         </div>
-          <ul style="overflow-y:scroll; height:400px">
-            <li class="todo-wrap one">
-              <div class="todo-content">
-                <h4 class="todo-name text-center">
+        <ul style="overflow-y:scroll; height:400px">
+          <li class="todo-wrap one">
+            <div class="todo-content">
+              <h4 class="todo-name text-center">
                   Kenya
                 </h4>
-                <ul>
-                    {% for trend in trends%}
-                    <a href="{{trend['url']}}" style="text-decoration:none">
-                    <div class="trends">
-                      <li style="margin-top:10px">{{trend['name']|upper}}</li>
-                      <hr>
-                    </div>
-                    </a>
-                  {% endfor %}
-                </ul>
-              </div>
-            </li>
-          </ul>
+              <ul>
+                {% for trend in trends%}
+                <a href="{{trend['url']}}" style="text-decoration:none">
+                  <div class="trends">
+                    <li style="margin-top:10px">{{trend['name']}}</li>
+                    <hr>
+                  </div>
+                </a>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  </div>
+</div>
 </div>
 
 
-{% block scripts %}
-{{super()}}
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+{% block scripts %} {{super()}}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
 
 <script type="text/javascript">
-$(function(){
-      var $ppc = $('.progress-pie-chart'),
-        percent = parseInt($ppc.data('percent')),
-        deg = 360*percent/100;
-      if (percent > 50) {
-        $ppc.addClass('gt-50');
-      }
-      $('.ppc-progress-fill').css('transform','rotate('+ deg +'deg)');
-      $('.ppc-percents span').html(percent+'%');
-    });
-
+  $(function() {
+    var $ppc = $('.progress-pie-chart'),
+      percent = parseInt($ppc.data('percent')),
+      deg = 360 * percent / 100;
+    if (percent > 50) {
+      $ppc.addClass('gt-50');
+    }
+    $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+    $('.ppc-percents span').html(percent + '%');
+  });
 </script>
 
-{% endblock %}
-
-{% endblock %} {% block styles %} {{ super() }}
+{% endblock %} {% endblock %} {% block styles %} {{ super() }}
 <style>
-.trends li:hover{
-  color: white;
-
-}
-.trends a{
-  text-align: center;
-  text-decoration: none;
-}
-  .progressDiv {
-    width: 100%;
-    background: #fcfcfc;
-    height: 325px;
-    border: 1px solid #ccc;
-    position: relative;
-    left: 0%;
-    top: 50px;
-    display: inline-block;
-    border-radius: 2px;
-    box-shadow: 0px 1px 1px 1px #ccc;
-  }
-
-  .statChartHolder {
-    width: 35%;
-    height: 90%;
-    position: relative;
-    border-right: 1px solid #ccc;
-    top: 15px;
-    display: inline-block;
-  }
-
-  .statRightHolder {
-    display: inline-block;
-    height: 90%;
-    width: 64%;
-    position: relative;
-    top: -32px;
+  a.nostyle {
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
     margin: 0;
   }
 
-  .statRightHolder ul {
-    list-style: none;
-    margin: 0;
+  div.portfoliocard {
+    height: 450px;
+    width: 400px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.1),
+    0px 2px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
   }
 
-  .statRightHolder li {
-    border-bottom: 1px solid #ccc;
-    height: 85px;
-    width: 95%;
-    position: relative;
-    top: -25px;
-  }
-
-.statRightHolder img{
-  border-bottom: 1px solid #ccc;
-  height: 55px;
-  position: relative;
-}
-  .statRightHolder h3 {
-    display: inline-block;
-    margin-right: 15px;
-    color: #B6B5B5;
-    font-weight: 300;
-    font-size: 38px;
-  }
-
-  .statRightHolder span {
-    display: inline-block;
-    color: #B6B5B5;
-    font-size: 21px;
-    font-weight: 300;
-  }
-
-  .statsLeft {
-    list-style: none;
-    display: inline-block;
-    width: 45%;
-  }
-
-  .statsLeft li {
+  div.portfoliocard div.coverphoto {
     width: 100%;
-    height: 14px;
-    border: none;
-    top: 5px;
-    margin-bottom: 25px;
+    height: 120px;
+    background-image: url('{{info['profile_banner_url']}}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 3px 20px rgba(255, 255, 255, 0.3),
+    1px 0px 2px rgba(255, 255, 255, 0.7);
+    z-index: 99;
   }
 
-  .statsLeft h3 {
-    font-size: 17px;
-    display: inline-block;
+  div.portfoliocard div.left_col,
+  div.portfoliocard div.right_col {
+    float: left;
+    height: 340px;
   }
 
-  .statsLeft span {
-    font-size: 17px;
-    display: inline-block;
+  div.portfoliocard div.left_col {
+    width: 40%;
+    padding-top: 85px;
+    box-sizing: border-box;
   }
 
-  .statsRight {
-    width: 45%;
-    display: inline-block;
+  div.portfoliocard div.right_col {
+    width: 60%;
+    background: rgba(245, 245, 245, 1);
+    border-left: 1px solid rgba(230, 230, 230, 1);
+    box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.7);
+    margin-left: -1px;
+    border-bottom-right-radius: 5px;
+  }
+
+  div.portfoliocard div.profile_picture {
+    width: 110px;
+    height: 110px;
+    background: rgba(255, 255, 255, 1);
     position: absolute;
+    top: 85px;
+    left: 40px;
+    border-radius: 100%;
+    background-image: url('{{info['profile_image_url_https']}}');
+    background-size: 100% 100%;
+    padding: 7px;
+    border: 4px solid rgba(255, 255, 255, 1)
   }
 
-  .statsRight li {
-    width: 100%;
-    height: 14px;
-    border: none;
-    top: 5px;
-    margin-bottom: 25px;
+  div.portfoliocard div.right_col h2.name {
+    font-size: 25px;
+    font-weight: 300;
+    color: #154360;
+    padding: 0;
+    margin: 20px 10px 0px 30px;
   }
 
-  .statsRight h3 {
-    font-size: 17px;
-    display: inline-block;
+  div.portfoliocard div.right_col h3.location {
+    font-size: 15px;
+    font-weight: 300;
+    color: #154360;
+    padding: 0;
+    margin: -5px 10px 10px 30px;
   }
 
-  .statsRight span {
-    font-size: 17px;
-    display: inline-block;
+
+  div.portfoliocard div.followers,
+  div.portfoliocard div.following {
+    margin: 10px 0px 0px 15px;
+    font-weight: 800;
+    font-size: 20px;
+    color: #1B2631;
+  }
+
+  div.portfoliocard div.follow_count {
+    font-weight: 400;
+    font-size: 25px;
+    color: rgba(110, 140, 140, 1);
+  }
+
+  .trends li:hover {
+    color: white;
+
+  }
+
+  .trends a {
+    text-align: center;
+    text-decoration: none;
   }
 
   /* Pie Chart */
@@ -330,7 +346,7 @@ $(function(){
 
   .span4 {
     width: 100%;
-    height:500px;
+    height: 500px;
   }
 
   [class*="span"] {

@@ -7,6 +7,7 @@ from flask_login import login_user, logout_user, login_required
 from ..email import mail_message
 from flask_dance.contrib.twitter import twitter
 
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()

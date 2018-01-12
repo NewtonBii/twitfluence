@@ -10,10 +10,6 @@ from TwitterAPI import TwitterAPI
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 
 
-
-
-
-
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -29,10 +25,6 @@ def create_app(config_name):
 
     # Creating the app configurations.
     app.config.from_object(config_options[config_name])
-    blueprint = make_twitter_blueprint(
-        api_key="dWsKFkfCXTKo42qbtEacqDJsj",
-        api_secret="HVkYw19eMvmjnWmUPElPyLHQrrUJLfoDSMAjBL7MCDqs2wj1OX",
-    )
 
     # Intitializing flask extensions
     bootstrap.init_app(app)
@@ -52,6 +44,8 @@ def create_app(config_name):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/authenticate')
 
-    app.register_blueprint(blueprint, url_prefix="/login")
+    twitter_blueprint = make_twitter_blueprint(api_key="AQiZnAVb1NlnMJooyIYonMiO8",api_secret="l08BAtgpJjOnblfJYxOK5gip2XSbQCNhsg7vNj9zcgmdLg2t3J")
+
+    app.register_blueprint(twitter_blueprint, url_prefix="/login")
 
     return app
