@@ -33,7 +33,7 @@ def twitter():
     if current_user.is_authenticated == False:
         return redirect(url_for("twitter.login"))
     resp = twitter.get("account/settings.json")
-    assert resp.ok
+
 
     return render_template('search.html')
 

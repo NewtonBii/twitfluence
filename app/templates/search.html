@@ -1,6 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+
+ {% block content %}
 <div class="container">
-  <div class="col-xs-8">
+  <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" style="margin-bottom:70px;">
     <form>
       <input type="text" name="screen_name" placeholder="Search for a user" class="form-control" value={{user_name}}>
       <input type="submit" value="SEARCH" class="btn btn-default btn-block ">
@@ -20,30 +23,38 @@
         </div>
         <!--End Chart -->
       </div>
-      <div class="statRightHolder">
-        <ul>
-          <li> <h3 class="blue">{{info['name']}}</h3> <img src="{{info['profile_image_url_https']}}" alt="image"> </li>
-            <h3 class="purple">@{{info['screen_name']}}</h3>
-          </li>
-        </ul>
+      <div class="statRightHolder" style="";>
+        <div class="col-sm-12 col-md-12">
 
-        <ul class="statsLeft">
-          <li>
-            <h3 class="yellow">{{info['followers_count']}}</h3> <span>Followers</span></li>
-          <li>
-            <h3 class="red">{{info['statuses_count']}}</h3> <span>Tweets</span></li>
-        </ul>
-        <ul class="statsRight">
-          <li>
-            <h3>{{info['friends_count']}}</h3> <span>Following</span></li>
-          <li>
-            <h3>{{info['favourites_count']}}</h3> <span>Likes</span></li>
-        </ul>
+            
+                  <h4 class="blue text-left" style="padding-top:35px;">{{info['name']}}         <img src="{{info['profile_image_url_https']}}" alt="image"></h4>
+                 
+                   <h5 class="purple text-left" style="position: relative;">@{{info['screen_name']}}</h5>
+           
+          <hr>
+
+        </div>
+
+   
+
+
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+                <h2>{{info['friends_count']}}</h2> <span>Following</span>
+                <h2>{{info['favourites_count']}}</h2> <span>Likes</span>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+                <h2 class="yellow">{{info['followers_count']}}</h2> <span>Followers</span>
+                <h2 class="red">{{info['statuses_count']}}</h2> <span>Tweets</span>
+          </div>
+
       </div>
+        <!--End profile objects -->
 
     </div>
   </div>
-  <div class="col-xs-4">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="">
     <div class="span4">
       <div class="todo mrm">
         <div class="todo-header">
@@ -100,11 +111,18 @@ $(function(){
 {% endblock %}
 
 {% endblock %} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/search.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Boogaloo|Bungee|Caveat+Brush|Russo+One" rel="stylesheet">
 <style>
 .trends li:hover{
   color: white;
 
 }
+.table th, .table td {
+     border-top: none !important;
+     border-left: none !important;
+ }
+
 .trends a{
   text-align: center;
   text-decoration: none;
